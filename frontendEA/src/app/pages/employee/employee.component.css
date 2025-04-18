@@ -1,0 +1,19 @@
+.employee-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.left-box {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.right-box {
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  padding: 20px;
+  min-height: 300px;
+}
