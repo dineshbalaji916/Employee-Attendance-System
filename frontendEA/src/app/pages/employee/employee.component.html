@@ -1,0 +1,19 @@
+<!-- Back to Home -->
+<button mat-button color="warn" routerLink="/">← Back to Home</button>
+
+<!-- Two-box layout -->
+<div class="employee-container">
+  <!-- Left panel with actions -->
+  <div class="left-box">
+    <button mat-button (click)="activeTab = 'checkin'">Check-In</button>
+    <button mat-button (click)="activeTab = 'checkout'">Check-Out</button>
+    <button mat-button (click)="activeTab = 'history'">View History</button>
+  </div>
+
+  <!-- Right panel with dynamic content -->
+  <div class="right-box">
+    <app-check-in-form *ngIf="activeTab === 'checkin'"></app-check-in-form>
+    <app-check-out-form *ngIf="activeTab === 'checkout'"></app-check-out-form>
+    <app-history *ngIf="activeTab === 'history'"></app-history>
+  </div>
+</div>
