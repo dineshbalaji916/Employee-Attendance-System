@@ -1,0 +1,13 @@
+<form [formGroup]="checkOutForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Employee ID</mat-label>
+    <input matInput formControlName="employeeId" required>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="checkOutForm.invalid">
+    Check-Out
+  </button>
+  <div *ngIf="message" style="margin-top: 10px; color: green;">
+    {{ message }}
+  </div>
+</form>

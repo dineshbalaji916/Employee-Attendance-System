@@ -1,0 +1,26 @@
+<form [formGroup]="checkInForm" (ngSubmit)="onSubmit()" action="/checkin">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Employee Name</mat-label>
+    <input matInput formControlName="employeeName" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Employee ID</mat-label>
+    <input matInput formControlName="employeeId" required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Department</mat-label>
+    <mat-select formControlName="department" name="employeeName" required>
+      <mat-option *ngFor="let dept of departments" [value]="dept">{{ dept }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="checkInForm.invalid">
+    Check-In
+  </button>
+  <div *ngIf="message" style="margin-top: 10px; color: green;">
+    {{ message }}
+  </div>
+
+</form>

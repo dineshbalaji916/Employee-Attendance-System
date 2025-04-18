@@ -1,0 +1,30 @@
+.manager-container {
+  padding: 20px;
+}
+
+.full-width {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.download-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+mat-form-field {
+  width: 200px;
+}
+
+.filter-actions {
+  margin-top: 10px;
+}

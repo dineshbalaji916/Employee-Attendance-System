@@ -1,0 +1,88 @@
+<!-- Back to Home -->
+<button mat-button color="warn" routerLink="/">← Back to Home</button>
+
+<!-- Manager content -->
+<div class="manager-container">
+  <h2>Attendance Report</h2>
+  <!-- Filters -->
+  <div class="filters">
+    <mat-form-field appearance="outline">
+      <mat-label>Employee Name</mat-label>
+      <input matInput [(ngModel)]="filters.employeeName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Department</mat-label>
+      <mat-select [(ngModel)]="filters.department">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let dept of departments" [value]="dept">{{ dept }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Start Date</mat-label>
+      <input matInput type="date" [(ngModel)]="filters.startDate">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>End Date</mat-label>
+      <input matInput type="date" [(ngModel)]="filters.endDate">
+    </mat-form-field>
+
+    <!-- Apply Filter Button -->
+    <div class="filter-actions">
+      <button mat-raised-button color="primary" (click)="applyFilters()">
+        Apply Filter
+      </button>
+    </div>
+  </div>
+
+  <button mat-stroked-button color="warn" (click)="resetFilters()">
+    Cancel Filters
+  </button>
+
+
+
+  <!-- Table -->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 full-width">
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let row"> {{ row.date }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="employeeName">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let row"> {{ row.employee_name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="employeeId">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let row"> {{ row.employee_id }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="department">
+      <th mat-header-cell *matHeaderCellDef> Department </th>
+      <td mat-cell *matCellDef="let row"> {{ row.department }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="checkIn">
+      <th mat-header-cell *matHeaderCellDef> Check-In </th>
+      <td mat-cell *matCellDef="let row"> {{ row.check_in_time }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="checkOut">
+      <th mat-header-cell *matHeaderCellDef> Check-Out </th>
+      <td mat-cell *matCellDef="let row"> {{ row.check_out_time || '—' }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+  <!-- Download buttons -->
+  <a href="http://localhost:3000/api/manager/download" download>
+    <button mat-raised-button color="accent">Download Excel</button>
+  </a>
+</div>

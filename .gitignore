@@ -1,0 +1,15 @@
+# Frontend
+/frontendEA/node_modules
+/frontendEA/.angular/cache
+/frontendEA/dist
+
+# Backend
+/backendEA/node_modules
+/backendEA/build
+/backendEA/dist
+
+# Logs
+*.log
+
+# Env files (if any)
+*.env
