@@ -1,0 +1,46 @@
+<div class="employee-page">
+  <!-- Back Button -->
+  <div class="back-container">
+    <button mat-stroked-button color="primary" routerLink="/">
+      <mat-icon>arrow_back</mat-icon>
+      Back to Home
+    </button>
+  </div>
+
+  <!-- Two-Box Layout -->
+  <div class="employee-container">
+    <!-- Left Panel: Navigation -->
+    <div class="left-box">
+      <button
+        mat-button
+        (click)="activeTab = 'checkin'"
+        [class.active]="activeTab === 'checkin'"
+      >
+        Check-In
+      </button>
+      <button
+        mat-button
+        (click)="activeTab = 'checkout'"
+        [class.active]="activeTab === 'checkout'"
+      >
+        Check-Out
+      </button>
+      <button
+        mat-button
+        (click)="activeTab = 'history'"
+        [class.active]="activeTab === 'history'"
+      >
+        History
+      </button>
+    </div>
+
+    <!-- Right Panel: Dynamic Content -->
+    <div class="right-box">
+      <div class="content-wrapper">
+        <app-check-in-form *ngIf="activeTab === 'checkin'"></app-check-in-form>
+        <app-check-out-form *ngIf="activeTab === 'checkout'"></app-check-out-form>
+        <app-history *ngIf="activeTab === 'history'"></app-history>
+      </div>
+    </div>
+  </div>
+</div>

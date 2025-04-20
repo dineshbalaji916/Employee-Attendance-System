@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
@@ -22,7 +23,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
   ],
   templateUrl: './manager.component.html',
   styleUrls: ['./manager.component.css']
@@ -95,5 +97,26 @@ export class ManagerComponent implements OnInit {
       }
     });
   }
-
+  downloadFilteredExcel(): void {
+    fetch('http://localhost:3000/api/manager/download', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.filters)
+    })
+      .then(response => response.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'filtered_attendance.xlsx';
+        link.click();
+        window.URL.revokeObjectURL(url);
+      })
+      .catch(err => {
+        console.error('Download failed:', err);
+      });
+  }
+  
 }

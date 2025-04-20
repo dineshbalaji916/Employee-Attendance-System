@@ -1,4 +1,21 @@
+.form-wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .full-width {
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: left;
+}
+
+.message {
+  margin-top: 10px;
+  color: green;
+  font-weight: 500;
 }

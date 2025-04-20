@@ -1,0 +1,58 @@
+.employee-page {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Back button style */
+.back-container button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* Container  */
+.employee-container {
+  display: flex;
+  background: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Left-side navigation panel */
+.left-box {
+  width: 220px;
+  background: #f1f1f1;
+  border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+}
+
+
+.left-box button.active {
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+}
+
+/* Right-side dynamic content area */
+.right-box {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+.content-wrapper {
+  width: 100%;
+  max-width: 600px; 
+}

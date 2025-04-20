@@ -7,12 +7,12 @@ export const getFilteredReports = (req: Request, res: Response): void => {
 
   let sql = `
     SELECT 
-      DATE(check_in_time) AS date,
+      DATE_FORMAT(check_in_time, '%Y-%m-%d') AS date,
+      DATE_FORMAT(check_in_time, '%H:%i:%s') AS check_in_time,
+      DATE_FORMAT(check_out_time, '%H:%i:%s') AS check_out_time,
       employee_name,
       employee_id,
-      department,
-      check_in_time,
-      check_out_time
+      department
     FROM attendance
     WHERE 1=1
   `;
@@ -52,19 +52,45 @@ export const getFilteredReports = (req: Request, res: Response): void => {
   });
 };
 export const downloadExcelReport = async (req: Request, res: Response) => {
-  const sql = `
+  const { employeeName, department, startDate, endDate } = req.body;
+
+  let sql = `
     SELECT 
-      DATE(check_in_time) AS date,
+      DATE_FORMAT(check_in_time, '%Y-%m-%d') AS date,
+      DATE_FORMAT(check_in_time, '%H:%i:%s') AS check_in_time,
+      DATE_FORMAT(check_out_time, '%H:%i:%s') AS check_out_time,
       employee_name,
       employee_id,
-      department,
-      check_in_time,
-      check_out_time
+      department
     FROM attendance
-    ORDER BY check_in_time DESC
+    WHERE 1=1
   `;
 
-  db.query(sql, async (err, rows) => {
+  const values: any[] = [];
+
+  if (employeeName) {
+    sql += ' AND employee_name LIKE ?';
+    values.push(`%${employeeName}%`);
+  }
+
+  if (department) {
+    sql += ' AND department = ?';
+    values.push(department);
+  }
+
+  if (startDate) {
+    sql += ' AND DATE(check_in_time) >= ?';
+    values.push(startDate);
+  }
+
+  if (endDate) {
+    sql += ' AND DATE(check_in_time) <= ?';
+    values.push(endDate);
+  }
+
+  sql += ' ORDER BY check_in_time DESC';
+
+  db.query(sql, values, async (err, rows) => {
     if (err) {
       console.error('Download Excel error:', err);
       return res.status(500).send('Failed to fetch data');
@@ -85,9 +111,10 @@ export const downloadExcelReport = async (req: Request, res: Response) => {
     worksheet.addRows(rows as any[]);
 
     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    res.setHeader('Content-Disposition', 'attachment; filename=attendance_report.xlsx');
+    res.setHeader('Content-Disposition', 'attachment; filename=filtered_attendance.xlsx');
 
     await workbook.xlsx.write(res);
     res.end();
   });
 };
+

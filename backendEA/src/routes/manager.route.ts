@@ -4,6 +4,6 @@ import { getFilteredReports, downloadExcelReport } from '../controllers/manager.
 const router = express.Router();
 
 router.post('/reports', getFilteredReports);
-router.get('/download', downloadExcelReport);
+router.post('/download', downloadExcelReport);
 
 export default router;
