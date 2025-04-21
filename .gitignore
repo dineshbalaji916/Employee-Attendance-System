@@ -4,9 +4,9 @@
 /frontend/dist
 
 # Backend
-/backendEA/node_modules
-/backendEA/build
-/backendEA/dist
+/backend/node_modules
+/backend/build
+/backend/dist
 
 # Env files
 *.env
