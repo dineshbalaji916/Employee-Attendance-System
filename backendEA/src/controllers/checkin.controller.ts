@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { db } from '../db';
 
 export const checkInEmployee = (req: Request, res: Response): void => {
-  
+
   const { employeeName, employeeId, department } = req.body;
 
   if (!employeeName || !employeeId || !department) {
@@ -22,10 +22,14 @@ export const checkInEmployee = (req: Request, res: Response): void => {
     }
 
     if ((results as any[]).length > 0) {
-      return res.status(409).json({ message: 'Already checked in today' }); // 409 Conflict
+      return res.status(409).json({ message: 'Already checked in today' });
     }
 
-    const checkInTime = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    const now = new Date();
+    const istOffset = 5.5 * 60 * 60 * 1000;
+    const istDate = new Date(now.getTime() + istOffset);
+    const checkInTime = istDate.toISOString().slice(0, 19).replace('T', ' ');
+
     const insertQuery = `
       INSERT INTO attendance (employee_name, employee_id, department, check_in_time)
       VALUES (?, ?, ?, ?)

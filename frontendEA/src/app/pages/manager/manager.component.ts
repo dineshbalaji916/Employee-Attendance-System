@@ -35,20 +35,12 @@ export class ManagerComponent implements OnInit {
 
   dataSource = [
     {
-      date: '2025-04-10',
-      employeeName: 'John Doe',
-      employeeId: 'EMP001',
-      department: 'IT',
-      checkIn: '09:00 AM',
-      checkOut: '05:00 PM'
-    },
-    {
-      date: '2025-04-09',
-      employeeName: 'Jane Smith',
-      employeeId: 'EMP002',
-      department: 'HR',
-      checkIn: '09:15 AM',
-      checkOut: '04:45 PM'
+      date: '',
+      employeeName: '',
+      employeeId: '',
+      department: '',
+      checkIn: '',
+      checkOut: ''
     }
   ];
 
