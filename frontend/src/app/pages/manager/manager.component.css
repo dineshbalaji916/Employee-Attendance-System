@@ -1,0 +1,83 @@
+.manager-page {
+  padding: 30px;
+}
+
+.manager-container {
+  padding: 20px;
+  background: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.manager-container h2 {
+  margin-bottom: 20px;
+}
+
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.filter-item {
+  min-width: 150px;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 16px;
+  align-items:baseline;
+  height: 56px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.table-wrapper {
+  margin-top: 20px;
+  overflow-x: auto;
+  max-height: 450px; 
+  display: block;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.download-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.back-container button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.header-row .title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}

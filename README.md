@@ -31,7 +31,7 @@ employee-attendance-system/
 
 ## Step 1: MySQL Setup
 
-1. Create a database named: `attendance_db`
+1. Create a database named: `employeeattendancesystem`
 2. Create a table with the following structure:
 
 ```sql
@@ -62,13 +62,13 @@ npx tsc --init
 
 ### Update DB credentials
 
-In `backend/db.ts`, update:
+In `backend/src/config`, add .env file:
 
 ```ts
-host: 'localhost',
-user: 'your_mysql_user',
-password: 'your_mysql_password',
-database: 'attendance_db'
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=employeeattendancesystem
 ```
 
 ### Run the server
