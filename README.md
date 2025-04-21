@@ -89,7 +89,7 @@ npm install -g @angular/cli
 
 ### Install project dependencies
 ```bash
-cd ../frontendEA
+cd ../frontend
 npm install
 ```
 
